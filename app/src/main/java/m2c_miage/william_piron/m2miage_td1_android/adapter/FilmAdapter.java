@@ -37,6 +37,7 @@ public class FilmAdapter extends ArrayAdapter<Film> {
         TextView director = view.findViewById(R.id.text_director_display);
 
         name.setText(f.getFilmName());
+        image.setImageBitmap(f.getImage());
         releaseDate.setText(f.getReleaseDate());
         director.setText(f.getDirector());
 

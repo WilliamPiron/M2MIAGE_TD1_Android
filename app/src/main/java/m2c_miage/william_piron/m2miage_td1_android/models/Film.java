@@ -1,14 +1,14 @@
 package m2c_miage.william_piron.m2miage_td1_android.models;
 
-import android.widget.ImageView;
+import android.graphics.Bitmap;
 
 public class Film {
-    private ImageView image;
+    private Bitmap image;
     private String filmName;
     private String releaseDate;
     private String director;
 
-    public Film(ImageView image, String name, String releaseDate, String director) {
+    public Film(Bitmap image, String name, String releaseDate, String director) {
         this.image = image;
         this.filmName = name;
         this.releaseDate = releaseDate;
@@ -22,11 +22,11 @@ public class Film {
         director = "";
     }
 
-    public ImageView getImage() {
+    public Bitmap getImage() {
         return image;
     }
 
-    public void setImage(ImageView image) {
+    public void setImage(Bitmap image) {
         this.image = image;
     }
 

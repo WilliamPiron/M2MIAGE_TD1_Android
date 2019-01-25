@@ -10,8 +10,12 @@ import java.util.ArrayList;
 
 import m2c_miage.william_piron.m2miage_td1_android.R;
 import m2c_miage.william_piron.m2miage_td1_android.adapter.FilmAdapter;
+import m2c_miage.william_piron.m2miage_td1_android.structures.FilmParameters;
+import m2c_miage.william_piron.m2miage_td1_android.thread.GetImageTask;
 
 public class MainActivity extends AppCompatActivity {
+
+    private String imgUrl = "http://lorempixel.com/200/200";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +26,20 @@ public class MainActivity extends AppCompatActivity {
         Button button_reload = findViewById(R.id.button_reload);
         Button button_add = findViewById(R.id.button_add);
 
-        ArrayList<Film> listeFilms = new ArrayList<Film>();
-        listeFilms.add(new Film());
+        final ArrayList<Film> listeFilms = new ArrayList<Film>();
+        for (int i = 0; i<10; i++){
+            listeFilms.add(new Film());
+        }
 
-        FilmAdapter filmAdapter = new FilmAdapter(this, listeFilms);
+        final FilmAdapter filmAdapter = new FilmAdapter(this, listeFilms);
         listViewFilms.setAdapter(filmAdapter);
 
         button_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                for (Film tmpfilm: listeFilms) {
+                    new GetImageTask(filmAdapter).execute(new FilmParameters(tmpfilm, imgUrl, filmAdapter));
+                }
             }
         });
 
